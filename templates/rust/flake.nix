@@ -79,7 +79,6 @@
           shellHook = ''
             if [ ! -f ./Cargo.toml ]; then
               ${packages.init}/bin/.init
-              ${packages.sync}/bin/.sync
             fi
           '';
         };
