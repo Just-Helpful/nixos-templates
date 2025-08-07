@@ -17,7 +17,7 @@
       let
         pkgs = import nixpkgs { inherit system; };
       in
-      {
+      rec {
         # packages wrapping cargo installation and building
         packages = {
           init = pkgs.writeShellScriptBin ".init" ''
@@ -64,29 +64,25 @@
             };
         };
 
-        devShells.default =
-          let
-            inherit (self) packages;
-          in
-          pkgs.mkShell {
-            packages = [
-              packages.init
-              packages.sync
-              packages.add
-              packages.del
-              packages.build
-              packages.run
-              packages.test
-              packages.lint
-            ];
+        devShells.default = pkgs.mkShell {
+          packages = [
+            packages.init
+            packages.sync
+            packages.add
+            packages.del
+            packages.build
+            packages.run
+            packages.test
+            packages.lint
+          ];
 
-            shellHook = ''
-              if [ ! -f ./Cargo.toml ]; then
-                ${packages.init}/bin/.init
-                ${packages.sync}/bin/.sync
-              fi
-            '';
-          };
+          shellHook = ''
+            if [ ! -f ./Cargo.toml ]; then
+              ${packages.init}/bin/.init
+              ${packages.sync}/bin/.sync
+            fi
+          '';
+        };
       }
     );
 }
