@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    naersk.url = "github:nixos-community/naersk/master";
     utils.url = "github:numtide/flake-utils";
   };
 
