@@ -20,10 +20,6 @@
       rec {
         # packages wrapping cargo installation and building
         packages = {
-          init = pkgs.writeShellScriptBin ".init" ''
-            ${pkgs.rustup}/bin/rustup run stable cargo init --lib $@
-          '';
-
           sync = pkgs.writeShellScriptBin ".sync" ''
             ${pkgs.rustup}/bin/rustup run stable cargo install $@
           '';
@@ -66,7 +62,6 @@
 
         devShells.default = pkgs.mkShell {
           packages = [
-            packages.init
             packages.sync
             packages.add
             packages.del
@@ -78,7 +73,7 @@
 
           shellHook = ''
             if [ ! -f ./Cargo.toml ]; then
-              ${packages.init}/bin/.init
+              ${pkgs.rustup}/bin/rustup run stable cargo init --lib
             fi
           '';
         };

@@ -3,7 +3,6 @@
 NixOS templates for development shells using a consistent set of commands.\
 In all development shells the following commands are available:
 
-- `.init`: initialise the project
 - `.sync`: installs all dependencies of the project
 - `.add`: adds new dependencies for the project
 - `.del`: deletes dependencies from the project

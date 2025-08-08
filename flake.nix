@@ -5,7 +5,9 @@
     { ... }:
     let
       cmds = ''
-        - `.init`: initialise the project
+        Initialise the shell with `nix develop` or `direnv`\
+        which will provide the following commands:
+
         - `.sync`: installs all dependencies of the project
         - `.add`: adds new dependencies for the project
         - `.del`: deletes dependencies from the project
@@ -24,9 +26,6 @@
           # Rust development shell
 
           Rust library development with `cargo`.
-
-          Initialise the shell with `nix develop`\
-          which will provide the following commands:
 
           ${cmds}
         '';
