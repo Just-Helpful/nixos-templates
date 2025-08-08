@@ -30,5 +30,17 @@
           ${cmds}
         '';
       };
+
+      templates.python = {
+        path = ./templates/python;
+        description = "A development shell for python libraries";
+        welcomeText = ''
+          # Python development shell
+
+          Python library development with `uv`, `ruff` and `pytest`.
+
+          ${cmds}
+        '';
+      };
     };
 }
