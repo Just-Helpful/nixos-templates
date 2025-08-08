@@ -62,11 +62,15 @@
 
         devShells.default = pkgs.mkShell {
           packages = [
+            pkgs.uv
+
             packages.sync
             packages.add
             packages.rem
+
             packages.build
             packages.run
+
             packages.test
             packages.lint
           ];
