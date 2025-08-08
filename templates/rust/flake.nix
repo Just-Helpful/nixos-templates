@@ -28,7 +28,7 @@
             ${pkgs.rustup}/bin/rustup run stable cargo add $@
           '';
 
-          del = pkgs.writeShellScriptBin ".del" ''
+          rem = pkgs.writeShellScriptBin ".rem" ''
             ${pkgs.rustup}/bin/rustup run stable cargo remove $@
           '';
 
@@ -64,9 +64,11 @@
           packages = [
             packages.sync
             packages.add
-            packages.del
+            packages.rem
+
             packages.build
             packages.run
+
             packages.test
             packages.lint
           ];

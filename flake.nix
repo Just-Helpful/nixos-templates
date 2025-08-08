@@ -10,7 +10,7 @@
 
         - `.sync`: installs all dependencies of the project
         - `.add`: adds new dependencies for the project
-        - `.del`: deletes dependencies from the project
+        - `.rem`: removes dependencies from the project
         - `.build`: build an executable version of the project
         - `.run`: runs the executable for the project
         - `.test`: tests the project code
