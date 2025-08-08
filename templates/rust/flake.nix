@@ -20,6 +20,11 @@
       rec {
         # packages wrapping cargo installation and building
         packages = {
+          # A shim around `cargo` using `rustup`
+          cargo = pkgs.writeShellScriptBin "cargo" ''
+            ${pkgs.rustup}/bin/rustup run stable cargo $@
+          '';
+
           sync = pkgs.writeShellScriptBin ".sync" ''
             ${pkgs.rustup}/bin/rustup run stable cargo install $@
           '';
@@ -62,6 +67,8 @@
 
         devShells.default = pkgs.mkShell {
           packages = [
+            packages.cargo
+
             packages.sync
             packages.add
             packages.rem
