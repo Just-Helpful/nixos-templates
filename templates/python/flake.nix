@@ -37,7 +37,11 @@
           '';
 
           run = pkgs.writeShellScriptBin ".run" ''
-            ${pkgs.uv}/bin/uv run main
+            if [[ $# -eq 0 ]]; then
+              ${pkgs.uv}/bin/uv run main
+            else
+              ${pkgs.uv}/bin/uv run $@
+            fi
           '';
 
           test = pkgs.writeShellScriptBin ".test" ''
