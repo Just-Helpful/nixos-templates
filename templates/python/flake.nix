@@ -52,6 +52,7 @@
             ${pkgs.uv}/bin/uv run ruff check
           '';
 
+          # @todo rework this for python packages
           default =
             let
               manifest = (pkgs.lib.importTOML ./Cargo.toml).package;
